@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('productos', function (Blueprint $table) {
-            $table->increments('cve_productos');
+        Schema::create('ofertas', function (Blueprint $table) {
+            $table->increments('cve_ofertas');
             $table->string('Marca')->nullable();
-            $table->string('tipo')->nullable();
-            $table->integer('Precio')->nullable();
-            $table->integer('Cantidad')->nullable();
+            $table->integer('Descuento')->nullable();
+            $table->string('Producto')->nullable();
+            $table->integer('Precio_original')->nullable();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('ofertas');
     }
 };

@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('productos', function (Blueprint $table) {
-            $table->increments('cve_productos');
-            $table->string('Marca')->nullable();
-            $table->string('tipo')->nullable();
-            $table->integer('Precio')->nullable();
-            $table->integer('Cantidad')->nullable();
+        Schema::create('locales', function (Blueprint $table) {
+            $table->increments('cve_locales');
+            $table->integer('numero')->nullable();
+            $table->integer('m3')->nullable();
+            $table->integer('piso')->nullable();
+            $table->integer('renta')->nullable();
         });
+
     }
 
     /**
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('locales');
     }
 };
