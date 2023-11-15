@@ -35,10 +35,10 @@
                         
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Ofertas') }}</a>
+                            <a class="nav-link" href="{{ route('ofertas.index') }}">{{ __('Ofertas') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Renta') }}</a>
+                            <a class="nav-link" href="{{ route('terminos-y-condiciones') }}">{{ __('Renta') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('productos.index') }}">{{ __('Productos') }}</a>

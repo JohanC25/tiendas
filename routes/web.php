@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AnuncioController;
+use App\Http\Controllers\LocalController;
+use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +28,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('productos', ProductoController::class);
 
-//Route::get('/productos/search/{id}', [ProductoController::class, 'search'])->name('productos.search');
+Route::resource('ofertas', OfertaController::class);
+
+Route::resource('anuncios', AnuncioController::class);
+
+Route::resource('locales', LocalController::class);
+
+Route::get('/terminos-y-condiciones', function () {
+    return view('terminos');
+})->name('terminos-y-condiciones');

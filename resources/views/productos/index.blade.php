@@ -10,6 +10,7 @@
             <input type="text" name="search" class="form-control" placeholder="Buscar por Marca" value="{{ request('search') }}">
         </div>
         <button type="submit" class="btn btn-primary">Buscar</button>
+        <a href="{{ route('home') }}" class="btn btn-primary">Regresar al Home</a>
     </form>
 
     <table class="table">
