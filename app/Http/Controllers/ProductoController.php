@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -52,5 +53,20 @@ class ProductoController extends Controller
     {
         $producto = Producto::findOrFail($id);
         return view('productos.show', compact('producto'));
+    }
+
+    public function generatePDF(Request $request)
+    {
+        $search = $request->input('search');
+
+        $productos = Producto::where('Marca', 'like', '%' . $search . '%')->get();
+
+        $data = [
+            'productos' => $productos,
+        ];
+
+        $pdf = PDF::loadView('productos.pdf', $data);
+
+        return $pdf->download('productos.pdf');
     }
 }

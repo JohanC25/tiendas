@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class OfertaController extends Controller
 {
@@ -55,5 +56,21 @@ class OfertaController extends Controller
     {
         $oferta = Oferta::findOrFail($id);
         return view('ofertas.show', compact('oferta'));
+    }
+
+
+    public function generatePDF(Request $request)
+    {
+        $search = $request->input('search');
+
+        $ofertas = Oferta::where('Producto', 'like', '%' . $search . '%')->get();
+
+        $data = [
+            'ofertas' => $ofertas,
+        ];
+
+        $pdf = PDF::loadView('ofertas.pdf', $data);
+
+        return $pdf->download('ofertas.pdf');
     }
 }

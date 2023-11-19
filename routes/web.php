@@ -27,8 +27,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('productos', ProductoController::class);
+Route::get('generate-pdf-productos', [ProductoController::class, 'generatePDF'])->name('productos.pdf');
 
 Route::resource('ofertas', OfertaController::class);
+Route::get('generate-pdf', [OfertaController::class, 'generatePDF'])->name('ofertas.pdf');
+
 
 Route::resource('anuncios', AnuncioController::class);
 
